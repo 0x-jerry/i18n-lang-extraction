@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`extract > should work with: sample.ts 1`] = `
+[
+  "x1中文11",
+  "中{0}文{1}",
+  "中文",
+]
+`;
+
+exports[`extract > should work with: sample.tsx 1`] = `
+[
+  "x1中文11",
+  "中{0}文{1}",
+  "中文",
+]
+`;
+
+exports[`extract > should work with: sample.vue 1`] = `
+[
+  "x1中文11",
+  "不错12312哟",
+  "不错哟",
+  "中{0}文",
+  "中{0}文{1}",
+  "中文",
+  "这是一段文本",
+]
+`;

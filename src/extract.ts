@@ -16,5 +16,5 @@ export async function extract(file: string) {
     },
   })
 
-  return result
+  return result.sort()
 }
