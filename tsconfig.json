@@ -13,10 +13,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "outDir": "dist",
-    "types": ["vitest/globals"],
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "types": ["vitest/globals"]
   },
   "include": ["src", "test"]
 }

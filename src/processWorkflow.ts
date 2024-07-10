@@ -1,4 +1,3 @@
-import { readFile } from 'fs/promises'
 import {
   quoteStrRegexp,
   singleChineseRegexp,
@@ -10,25 +9,23 @@ import {
   maybeChineseStrRegexp,
 } from './utils'
 
-interface ProcessContext {
-  file: string
-  options: ProcessOptions
+interface ProcessContext extends ProcessOptions {
+  content: string
 }
 
 export interface ProcessOptions {
+  type?: 'vue' | 'js'
   getI18nKey?(str: string): string | undefined
 }
 
-export async function processI18nWorkflow(filePath: string, opt: ProcessOptions) {
+export async function processI18nWorkflow(fileContent: string, opt: ProcessOptions) {
   const ctx: ProcessContext = {
-    file: filePath,
-    options: opt,
+    content: fileContent,
+    ...opt,
   }
 
-  const content = await readFile(filePath, 'utf-8')
-
-  return processWithoutComments(content, (contentWithoutComment) => {
-    if (filePath.endsWith('.vue')) {
+  return processWithoutComments(fileContent, (contentWithoutComment) => {
+    if (ctx.type === 'vue') {
       return processVueContent(ctx, contentWithoutComment)
     } else {
       return processJsContent(ctx, contentWithoutComment)
@@ -148,7 +145,7 @@ function findTranslationKey(ctx: ProcessContext, text: string) {
   text = text.replace(/\n\s+/g, '\n')
   text = text.trim()
 
-  const key = ctx.options.getI18nKey?.(text)
+  const key = ctx.getI18nKey?.(text)
 
   return key
 }
