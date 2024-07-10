@@ -1,1 +1,1 @@
-export const hello = 'world'
+export { extract } from './extract'

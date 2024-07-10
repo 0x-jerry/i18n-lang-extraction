@@ -13,8 +13,13 @@ interface ProcessContext extends ProcessOptions {
   content: string
 }
 
+export enum ProcessContentType {
+  Vue = 'vue',
+  Js = 'js',
+}
+
 export interface ProcessOptions {
-  type?: 'vue' | 'js'
+  type?: ProcessContentType | `${ProcessContentType}`
   getI18nKey?(str: string): string | undefined
 }
 

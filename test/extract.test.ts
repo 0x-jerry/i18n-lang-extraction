@@ -1,6 +1,6 @@
 import fg from 'fast-glob'
 import path from 'path'
-import { extract } from '../src/extract'
+import { extract } from '../src'
 
 describe('extract', async () => {
   const exampleDir = path.join(__dirname, 'examples')
