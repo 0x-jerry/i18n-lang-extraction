@@ -72,7 +72,7 @@ function processJsContent(ctx: ProcessContext, fileContent: string): string {
 
       const key = findTranslationKey(ctx, parsedResult.tpl)
 
-      return `$t('${key}', [${variables.join(', ')}])`
+      return key ? `$t('${key}', [${variables.join(', ')}])` : text;
     })
     .replace(quoteStrRegexp, (t) => {
       if (!singleChineseRegexp.test(t)) {
