@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@0x-jerry/utils':
-        specifier: ^2.4.2
-        version: 2.4.2
+        specifier: ^4.0.0
+        version: 4.0.1
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -23,10 +23,10 @@ importers:
         version: 20.14.10
       '@vitest/coverage-v8':
         specifier: ^2.0.1
-        version: 2.0.1(vitest@2.0.1)
+        version: 2.0.1(vitest@2.0.1(@types/node@20.14.10))
       tsup:
         specifier: ^8.1.0
-        version: 8.1.0(typescript@5.5.3)
+        version: 8.1.0(postcss@8.4.39)(typescript@5.5.3)
       tsx:
         specifier: ^4.16.2
         version: 4.16.2
@@ -44,6 +44,9 @@ packages:
 
   '@0x-jerry/utils@2.4.2':
     resolution: {integrity: sha512-G0EVImdNJt4XE54EAHPMbtbGLNpdbiG4N1k/VhN6JcXCg7o1hAV+Du1WXRIFAyb3jwRFy4RERv2zw1s6RZa3YQ==}
+
+  '@0x-jerry/utils@4.0.1':
+    resolution: {integrity: sha512-q//1rKmCtiFTakXQB+9BneZJsEVpK/LLKJ1XRlSfc4DcR92tObay1SNT7luZ47olx+1ofBwoCE99U87xNAH4cA==}
 
   '@0x-jerry/x-release@2.2.2':
     resolution: {integrity: sha512-WgOXuzoLhZeyeQnjXAsOfMmG45DzFZx7BUCPABjT5uaBOOIIpzXmo5JO1vu3jE2TlNpermfOE//YSXhUyPxURQ==}
@@ -875,6 +878,11 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
+  nanoid@5.0.9:
+    resolution: {integrity: sha512-Aooyr6MXU6HpvvWXKoVoXwKMs/KyVakWwg7xQfv5/S/RIgJMy0Ifa45H9qqYy7pTCszrHzP21Uk4PZq2HpEM8Q==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
@@ -927,6 +935,9 @@ packages:
 
   picocolors@1.0.1:
     resolution: {integrity: sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==}
+
+  picocolors@1.1.1:
+    resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
   picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
@@ -1251,6 +1262,12 @@ snapshots:
       nanoid: 5.0.7
       picocolors: 1.0.1
 
+  '@0x-jerry/utils@4.0.1':
+    dependencies:
+      fflate: 0.8.2
+      nanoid: 5.0.9
+      picocolors: 1.1.1
+
   '@0x-jerry/x-release@2.2.2':
     dependencies:
       '@0x-jerry/load-pkg': 0.1.5
@@ -1528,7 +1545,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@vitest/coverage-v8@2.0.1(vitest@2.0.1)':
+  '@vitest/coverage-v8@2.0.1(vitest@2.0.1(@types/node@20.14.10))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -1963,6 +1980,8 @@ snapshots:
 
   nanoid@5.0.7: {}
 
+  nanoid@5.0.9: {}
+
   normalize-path@3.0.0: {}
 
   npm-run-path@4.0.1:
@@ -2002,6 +2021,8 @@ snapshots:
 
   picocolors@1.0.1: {}
 
+  picocolors@1.1.1: {}
+
   picomatch@2.3.1: {}
 
   pirates@4.0.6: {}
@@ -2012,10 +2033,12 @@ snapshots:
       mlly: 1.7.1
       pathe: 1.1.2
 
-  postcss-load-config@4.0.2:
+  postcss-load-config@4.0.2(postcss@8.4.39):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.4.5
+    optionalDependencies:
+      postcss: 8.4.39
 
   postcss@8.4.39:
     dependencies:
@@ -2180,7 +2203,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tsup@8.1.0(typescript@5.5.3):
+  tsup@8.1.0(postcss@8.4.39)(typescript@5.5.3):
     dependencies:
       bundle-require: 4.2.1(esbuild@0.21.5)
       cac: 6.7.14
@@ -2190,12 +2213,14 @@ snapshots:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 4.0.2
+      postcss-load-config: 4.0.2(postcss@8.4.39)
       resolve-from: 5.0.0
       rollup: 4.18.1
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tree-kill: 1.2.2
+    optionalDependencies:
+      postcss: 8.4.39
       typescript: 5.5.3
     transitivePeerDependencies:
       - supports-color
@@ -2241,17 +2266,16 @@ snapshots:
 
   vite@5.3.3(@types/node@20.14.10):
     dependencies:
-      '@types/node': 20.14.10
       esbuild: 0.21.5
       postcss: 8.4.39
       rollup: 4.18.1
     optionalDependencies:
+      '@types/node': 20.14.10
       fsevents: 2.3.3
 
   vitest@2.0.1(@types/node@20.14.10):
     dependencies:
       '@ampproject/remapping': 2.3.0
-      '@types/node': 20.14.10
       '@vitest/expect': 2.0.1
       '@vitest/runner': 2.0.1
       '@vitest/snapshot': 2.0.1
@@ -2269,6 +2293,8 @@ snapshots:
       vite: 5.3.3(@types/node@20.14.10)
       vite-node: 2.0.1(@types/node@20.14.10)
       why-is-node-running: 2.3.0
+    optionalDependencies:
+      '@types/node': 20.14.10
     transitivePeerDependencies:
       - less
       - lightningcss
